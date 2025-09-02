@@ -23,7 +23,8 @@ function TodoList() {
     <ul className = "to-do list">
      {todoList.map((item) => (
         <li key = {item.id}  onClick={() => toggleComplete(item.id)}>{item.text}</li>
-    ))}
+    
+     ))}
 
     </ul>
     </div>
