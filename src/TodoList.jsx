@@ -11,6 +11,14 @@ function TodoList() {
     setTodo('');
     }
 
+    const toggleComplete = (id) => {
+        setTodoList(
+        todoList.map((item) =>
+          item.id === id? {...item, completed: !item.completed}: item
+    )
+    )
+    }
+
   return (
     <div>
     <div className = "container">
@@ -22,8 +30,15 @@ function TodoList() {
     </div> 
     <ul className = "to-do list">
      {todoList.map((item) => (
-        <li key = {item.id}  onClick={() => toggleComplete(item.id)}>{item.text}</li>
-    
+        <li 
+        key = {item.id}  
+        onClick={() => toggleComplete(item.id)}
+        style={{
+            cursor:'pointer',
+            textDecoration: item.completed? 'line-through': 'none',
+            color: item.completed? 'gray':'black'
+        }}
+        >{item.text}</li>
      ))}
 
     </ul>
