@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from "react"
-import TodoItem from "./TodoItem";
+
 
 function TodoList() {
     const [ todo, setTodo] = useState('');
@@ -44,7 +44,7 @@ function TodoList() {
      {todoList.map((item) => (
         <li
         key = {item.id}  
-        onClick={() => (item.id)}
+        onClick={() => toggleComplete (item.id)}
         style={{
             cursor:'pointer',
             textDecoration: item.completed? 'line-through': 'none',

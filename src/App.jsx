@@ -1,13 +1,13 @@
 // import { useState } from "react"
 import Header from "./Header"
-import TodoList from "./TodoList";
+import TodoList from "./TodoList"
 
 function App (){
   
   return (
     <div>
-    <Header/>
-    <TodoList/>
+    <Header />
+    <TodoList />
     </div>
   )
 }
