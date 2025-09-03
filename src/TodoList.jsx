@@ -29,8 +29,9 @@ function TodoList() {
 
 
   return (
-    <div>
-    <div className = "container">
+    <div className = "app-container">
+      
+     <div className = "input-container">
        <input type = "text"
        placeholder ="Add a Task.."
        value = {todo}
@@ -38,9 +39,9 @@ function TodoList() {
        <button className = 'add-button' 
        onClick={addTodo}>
         Add</button>
+     </div>
 
-    </div> 
-    <ul className = "to-do list">
+    <ul className = "todo-list">
      {todoList.map((item) => (
         <li
         key = {item.id}  
@@ -53,7 +54,7 @@ function TodoList() {
         >
           <span>{item.text}</span>
           <button
-            className="delete-btn"
+            className="delete-button"
             onClick={(e)=>{
               e.stopPropagation();
               deleteTodo(item.id);
@@ -64,8 +65,8 @@ function TodoList() {
           </button>
           </li>
      ))}
-    </ul>
-    </div>
+     </ul>
+  </div>
   )
 }
 
