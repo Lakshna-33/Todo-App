@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from "react"
+import TodoItem from "./TodoItem";
 
 function TodoList() {
     const [ todo, setTodo] = useState('');
@@ -19,6 +20,14 @@ function TodoList() {
     )
     }
 
+    const deleteTodo = (id) =>{
+        setTodoList(
+            todoList.filter((item)=> item.id !== id)
+        )  
+    }
+
+
+
   return (
     <div>
     <div className = "container">
@@ -26,21 +35,35 @@ function TodoList() {
        placeholder ="Add a Task.."
        value = {todo}
        onChange={(e) => setTodo(e.target.value)} />
-       <button className = 'add-button' onClick={addTodo}>Add</button>
+       <button className = 'add-button' 
+       onClick={addTodo}>
+        Add</button>
+
     </div> 
     <ul className = "to-do list">
      {todoList.map((item) => (
-        <li 
+        <li
         key = {item.id}  
-        onClick={() => toggleComplete(item.id)}
+        onClick={() => (item.id)}
         style={{
             cursor:'pointer',
             textDecoration: item.completed? 'line-through': 'none',
-            color: item.completed? 'gray':'black'
+            color: item.completed? 'black':'black',
         }}
-        >{item.text}</li>
+        >
+          <span>{item.text}</span>
+          <button
+            className="delete-btn"
+            onClick={(e)=>{
+              e.stopPropagation();
+              deleteTodo(item.id);
+           }
+           }       
+         >
+            Delete
+          </button>
+          </li>
      ))}
-
     </ul>
     </div>
   )
